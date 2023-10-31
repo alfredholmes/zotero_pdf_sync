@@ -45,7 +45,7 @@ def main():
                 r = requests.post(f'{endpoint}/users/{keys.USER_ID}/items', data=json.dumps([attachment]),headers=headers)
                 if r.status_code == 200:
                     #write succesfull
-                    for completed in json.loads(r.text)['successful']:
+                    for key, completed in json.loads(r.text)['successful'].items():
                         Attachment.create(zotero_id = completed['key'], version=int(completed['version']), path=completed['data']['path'], item=item)
 
 
