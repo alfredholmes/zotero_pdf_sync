@@ -51,6 +51,10 @@ def main():
             expression = "Citation Key: ([a-zA-Z0-9_]+)" 
             result = re.search(expression, ob['data']['extra'])
             if result is not None:
+                try:
+                    saved_item = Item.get(zotero_id = item)
+                except Item.DoesNotExist:
+                    saved_item = Item(zotero_id = item)
                 saved_item = Item.get_or_create(zotero_id=item)
                 saved_item.version = item_version
                 saved_item.citation_key = result.group(1)
