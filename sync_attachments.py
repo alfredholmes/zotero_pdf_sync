@@ -60,7 +60,7 @@ def main():
             print(f'no item with id {ob["parentItem"]}')
 
     for attachment in Attachment: 
-        if attachment.zotero_id not in items_keys:
+        if attachment.zotero_id not in item_keys:
             attachment.delete_instance()
 
     version.attachments_up_to_date = True
