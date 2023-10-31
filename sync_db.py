@@ -28,9 +28,8 @@ def main():
     item_keys = r.text.split('\n')[:-1]
 
     item_objects = []
-    
     last_modified_version = int(r.headers['Last-Modified-Version'])
-    version = LibraryVersion.get_or_create(version= last_modified_version)
+    version = LibraryVersion.get_or_create(version= last_modified_version)[0]
     if version.items_up_to_date:
         return
 
