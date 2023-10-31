@@ -55,7 +55,6 @@ def main():
                     saved_item = Item.get(zotero_id = item)
                 except Item.DoesNotExist:
                     saved_item = Item(zotero_id = item)
-                saved_item = Item.get_or_create(zotero_id=item)
                 saved_item.version = item_version
                 saved_item.citation_key = result.group(1)
                 saved_item.save()
