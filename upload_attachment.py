@@ -43,7 +43,7 @@ def main():
                 attachment['parentItem'] = item.zotero_id
 
                 r = requests.post(f'{endpoint}/users/{keys.USER_ID}/items', data=json.dumps([attachment]),headers=headers)
-                if r.status = 200:
+                if r.status == 200:
                     #write succesfull
                     for completed in json.loads(r.text)['successful']:
                         Attachment.create(zotero_id = completed['key'], version=int(completed['version']), path=completed['data']['path'], item=item)
