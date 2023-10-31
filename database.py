@@ -11,13 +11,14 @@ class BaseModel(pw.Model):
 class Item(BaseModel):
     zotero_id = pw.CharField(unique=True)
     citation_key = pw.CharField()
+    version = pw.IntegerField(default=0)
 
 
 class Attachment(BaseModel):
     zotero_id = pw.CharField(unique=True)
     item = pw.ForeignKeyField(Item, on_delete='CASCADE', backref='attachments')
     path = pw.CharField()
-    version = pw.IntegerField()
+    version = pw.IntegerField(default=0)
 
 class LibraryVersion(BaseModel):
     version = pw.IntegerField()

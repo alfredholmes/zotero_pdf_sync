@@ -59,7 +59,7 @@ def main():
         try:
             if 'path' in ob and 'parentItem' in ob:
                 parent_item = Item.get(zotero_id=ob['parentItem'])
-                attachment = Attachment.get_or_create(zotero_id=item, item=parent_item, path=ob['path'], version=ob['version'])
+                attachment = Attachment.get_or_create(zotero_id=item, item=parent_item, path=ob['path'])
             #print(parent_item.citation_key, ob['path'])
         except Item.DoesNotExist:
             print(f'no item with id {ob["parentItem"]}')
