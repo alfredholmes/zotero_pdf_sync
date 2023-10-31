@@ -31,6 +31,12 @@ def main():
     if version.attachments_up_to_date:
         return
 
+
+    last_synced_version = 0
+    for previous_versions in LibraryVersion.select().where(LibraryVersion.attachments_up_to_date==True).order_by(LibraryVersion.version.desc()):
+        last_synced_version = previous_version.version
+        break
+
     
     item_keys = r.text.split('\n')[:-1]
 
@@ -47,9 +53,8 @@ def main():
         r = requests.get(f'{endpoint}/users/{keys.USER_ID}/items/{item}', headers=headers)
         ob = json.loads(r.text)['data']
 
-        print(ob)
-
-
+        if ob['version'] < last_synced_version:
+            break
 
         try:
             if 'path' in ob and 'parentItem' in ob:
@@ -60,7 +65,7 @@ def main():
             print(f'no item with id {ob["parentItem"]}')
 
     for attachment in Attachment: 
-        if attachment.zotero_id not in items_keys:
+        if attachment.zotero_id not in item_keys:
             attachment.delete_instance()
 
     version.attachments_up_to_date = True
