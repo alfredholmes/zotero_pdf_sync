@@ -13,7 +13,7 @@ def main():
             'Zotero-API-Key': keys.API_KEY
     } 
 
-    directory = key.PDF_DIRECTORY
+    directory = keys.PDF_DIRECTORY
     exclude_directory = keys.SEARCH_EXCLUDE 
 
     files = get_files(directory) 
