@@ -33,7 +33,7 @@ def main():
 
 
     last_synced_version = 0
-    for previous_versions in LibraryVersion.select().where(LibraryVersion.attachments_up_to_date==True).order_by(LibraryVersion.version.desc()):
+    for previous_version in LibraryVersion.select().where(LibraryVersion.attachments_up_to_date==True).order_by(LibraryVersion.version.desc()):
         last_synced_version = previous_version.version
         break
 

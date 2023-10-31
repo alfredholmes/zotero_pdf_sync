@@ -30,7 +30,7 @@ def main():
     attachment = json.loads(r.text)
 
     parent_items = [item for item in Item]
-    files = get_files(key.PDF_DIRECTORY)
+    files = get_files(keys.PDF_DIRECTORY)
 
     
     for file in files:
@@ -43,7 +43,11 @@ def main():
                 attachment['parentItem'] = item.zotero_id
 
                 r = requests.post(f'{endpoint}/users/{keys.USER_ID}/items', data=json.dumps([attachment]),headers=headers)
-                print(r.text)
+                if r.status = 200:
+                    #write succesfull
+                    for completed in json.loads(r.text)['successful']:
+                        Attachment.create(zotero_id = completed['key'], version=int(completed['version']), path=completed['data']['path'], item=item)
+
 
 
      
