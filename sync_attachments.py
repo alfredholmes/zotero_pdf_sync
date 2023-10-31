@@ -28,7 +28,7 @@ def main():
 
     last_modified_version = int(r.headers['Last-Modified-Version'])
     version = LibraryVersion.get_or_create(version= last_modified_version)
-    if not version[0]:
+    if version.attachments_up_to_date:
         return
 
     
@@ -63,7 +63,8 @@ def main():
         if attachment.zotero_id not in items_keys:
             attachment.delete_instance()
 
-
+    version.attachments_up_to_date = True
+    version.save()
 
 
                 

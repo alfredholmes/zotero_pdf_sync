@@ -31,7 +31,7 @@ def main():
     
     last_modified_version = int(r.headers['Last-Modified-Version'])
     version = LibraryVersion.get_or_create(version= last_modified_version)
-    if not version[0]:
+    if version.items_up_to_date:
         return
 
     number_of_items = len(item_keys)
@@ -46,9 +46,9 @@ def main():
                 item_objects.append(Item.get_or_create(zotero_id=item, citation_key=result.group(1)))
 
    
-
-
-
+ 
+    version.items_up_to_date = True
+    version.save()
 
 
                 

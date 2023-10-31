@@ -21,6 +21,8 @@ class Attachment(BaseModel):
 
 class LibraryVersion(BaseModel):
     version = pw.IntegerField()
+    items_up_to_date = pw.BooleanField(default=False)
+    attachments_up_to_date = pw.BooleanField(default=False)
 
 
 def create_tables(*models):
