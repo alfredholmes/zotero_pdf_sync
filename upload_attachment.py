@@ -36,7 +36,6 @@ def main():
     for file in files:
         for item in parent_items:
             if item.citation_key in str(file):
-                print(str(file), item.citation_key)
                 path = 'attachments:' + str(file).split(keys.ZOTERO_ROOT)[1]
                 attachment['path'] = path
                 attachment['title'] = str(file).split('/')[-1]
@@ -53,6 +52,7 @@ def main():
                 if r.status_code == 200:
                     #write succesfull
                     for key, completed in json.loads(r.text)['successful'].items():
+                        print(str(file), item.citation_key)
                         Attachment.create(zotero_id = completed['key'], version=int(completed['version']), path=completed['data']['path'], item=item)
 
 
