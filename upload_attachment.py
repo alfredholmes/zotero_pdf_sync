@@ -42,6 +42,13 @@ def main():
                 attachment['title'] = str(file).split('/')[-1]
                 attachment['parentItem'] = item.zotero_id
 
+                try:
+                    Attachment.get(item=item, path=path)
+                    continue
+                except Attachment.DoesNotExist:
+                    pass
+                    
+
                 r = requests.post(f'{endpoint}/users/{keys.USER_ID}/items', data=json.dumps([attachment]),headers=headers)
                 if r.status_code == 200:
                     #write succesfull
