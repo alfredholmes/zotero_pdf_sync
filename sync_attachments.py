@@ -44,11 +44,6 @@ def main():
 
     number_of_items = len(item_keys)
     for i, item in enumerate(item_keys):
-        try:
-            Attachment.get(zotero_id = item)
-            continue
-        except Attachment.DoesNotExist:
-            pass
         print(f'item {i} out of {number_of_items}')
         r = requests.get(f'{endpoint}/users/{keys.USER_ID}/items/{item}', headers=headers)
         ob = json.loads(r.text)['data']
