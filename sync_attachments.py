@@ -27,7 +27,7 @@ def main():
     r = requests.get(f'{endpoint}/users/{keys.USER_ID}/items', headers=headers, params=parameters)
 
     last_modified_version = int(r.headers['Last-Modified-Version'])
-    version = LibraryVersion.get_or_create(version= last_modified_version)
+    version = LibraryVersion.get_or_create(version= last_modified_version)[0]
     if version.attachments_up_to_date:
         return
 
