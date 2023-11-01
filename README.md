@@ -9,7 +9,7 @@ WARNING: These scripts could potentially delete attachments from your zotero lib
 ### Installation
 To run clone the repository and install `peewee` and `requests` using
 ```
-$ pip isntall peewee requests
+$ pip install peewee requests
 ```
 
 Then create a file `keys.py` with the following contents
