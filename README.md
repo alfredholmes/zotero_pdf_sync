@@ -1,7 +1,7 @@
 # Zotero PDF Sync
 Sync pdf attachments to zotero
 
-This is a collection of python scripts that scans the files in a folder and checks whether there are any pdf files that widh filenames that begin with a citation key of an zotero bibliography item. If there are then the scripts add the files as an attachment to corresponding zotero item. At the moment the scripts assume that they are scanning files that are contained in the Zotero base directory and the files are attached as linked files, that is, the files are not uploaded to the zotero cloud storage.
+This is a collection of python scripts that scans the files in a folder and checks whether there are any pdf files with filenames that begin with a citation key of an zotero bibliography item. If there are then the scripts add the files as an attachment to corresponding zotero item. At the moment the scripts assume that they are scanning files that are contained in the Zotero base directory and the files are attached as linked files, that is, the files are not uploaded to the zotero cloud storage.
 
 ## How to use
 WARNING: These scripts could potentially delete attachments from your zotero libary if not properly configured.
