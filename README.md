@@ -36,7 +36,7 @@ base_directory:
 Settings for this setup would be, if the base directory is /home/user/base_directory
 
 ```
-PDF_DIRECTORY = '/home/user/zotero_base/NotePDFs'
+PDF_DIRECTORY = '/home/user/base_directory/NotePDFs'
 ZOTERO_ROOT = '/home/user/base_directory/'
 SEARCH_EXCLUDE = 'attachments:References'
 ```
